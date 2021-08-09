@@ -14,8 +14,7 @@ let userSchema = new Schema({
   image: { type: String, default: null },
   profile: { type: mongoose.Types.ObjectId, ref: 'Profile' },
   articles: [{ type: mongoose.Types.ObjectId, ref: 'Article' }],
-  comments: [{ type: mongoose.Types.ObjectId, red: 'Comment' }],
-  token: {type: String }
+  comments: [{ type: mongoose.Types.ObjectId, red: 'Comment' }]
 });
 
 userSchema.pre('save', async function (next) {
