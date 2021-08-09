@@ -60,6 +60,25 @@ userSchema.methods.createToken = async function (password) {
   }
 };
 
+userSchema.methods.userJSON = function(token) {
+  return {
+      username: this.username,
+      email: this.email,
+      bio: this.bio,
+      image: this.image,
+      token: token
+  }
+}
+
+userSchema.methods.displayUser = function(id = null) {
+  return {
+      username: this.username,
+      bio: this.bio,
+      image: this.image, 
+      following: id ? this.followersList.includes(id) : false
+  }
+}
+
 let User = mongoose.model('User', userSchema);
 
 module.exports = User;

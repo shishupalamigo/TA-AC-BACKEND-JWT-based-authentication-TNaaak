@@ -13,6 +13,16 @@ let commentSchema = new Schema(
   { timestamps: true }
 );
 
+commentSchema.methods.displayComment = function(id = null) {
+  return {
+      id: this.id,
+      body: this.body,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      author: this.author.displayUser(id)
+  }
+}
+
 let Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = Comment;
