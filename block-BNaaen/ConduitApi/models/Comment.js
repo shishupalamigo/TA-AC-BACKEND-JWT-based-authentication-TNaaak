@@ -13,10 +13,6 @@ let commentSchema = new Schema(
   { timestamps: true }
 );
 
-commentSchema.pre('save', async function (next) {
-  next();
-});
-
 let Comment = mongoose.model('Comment', commentSchema);
 
 module.exports = Comment;
